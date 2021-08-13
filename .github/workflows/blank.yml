@@ -1,0 +1,52 @@
+name: Sync Code
+
+on:
+  release:
+    types: [published]
+  push:
+    branches:
+      - main
+#      - dev
+
+jobs:
+  sync_code:
+    runs-on: self-hosted
+
+    steps:
+
+    - name: test
+      run: |
+        cd /home/PCLC0/alluo/test_resukt
+        echo 'aaaaaa' > test.txt
+#    - name: Checkout
+#      uses: actions/checkout@v2
+#      with:
+#        persist-credentials: false
+#
+#    - name: Set Codeclimate
+#      env:
+#        DEBIAN_FRONTEND: noninteractive
+#      run: |
+#        curl -L https://github.com/codeclimate/codeclimate/archive/master.tar.gz | tar xvz
+#        cd codeclimate-* && sudo make install
+#        cd ../
+#        echo 'version: "1"
+#        plugins:
+#           bandit:
+#             enabled: true
+#           duplication:
+#             enabled: true
+#           pep8:
+#             enabled: true
+#           phan:
+#             enabled: true' > .codeclimate.yml
+#        codeclimate engines:install
+#        codeclimate validate-config
+#        rm -rf codeclimate-*
+#        codeclimate analyze -f html > result.html
+#        # python3 send_email.py
+#    - name: out
+#      uses: actions/upload-artifact@v2
+#      with:
+#        name: result
+#        path: result.html
